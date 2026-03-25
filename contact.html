@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Chalson Tech</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff69b4, #1e90ff);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d6efd, #0056b3);
+            height: 10px;
+        }
+
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            transition: 0.3s;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .drawer.active {
+            left: 0;
+        }
+
+        .drawer nav {
+            padding: 80px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .drawer a {
+            color: #0d6efd;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .drawer a:hover {
+            color: #0056b3;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #0d6efd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 600px;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card p {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0d6efd;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s ease;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px;
+                margin: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+</header>
+
+<div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<div class="drawer" id="drawer">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="apps.html">My Apps</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</div>
+
+<a href="index.html" class="btn back-btn">← Back to Home</a>
+
+<div class="card">
+    <h2 style="text-align: center; margin-bottom: 40px; color: #0d6efd; font-size: 2.5rem;">Contact</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 15px;">Email: chalsontech27@gmail.com</p>
+    <p style="font-size: 1.2rem; margin-bottom: 15px;">Phone: 0606136842</p>
+    <a href="https://wa.me/27606136842" class="btn" style="display: inline-block; margin-top: 10px;">WhatsApp</a>
+</div>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('drawer-overlay');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        drawer.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+</script>
+
+</body>
+</html>
